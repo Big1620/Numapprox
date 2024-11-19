@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NumApprox</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.8.0/math.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>NumApprox</h1>
+            <p>Software Avanzado para Métodos Numéricos</p>
+        </header>
+
+        <div class="main-content">
+            <div class="sidebar">
+                <div class="method-selector">
+                    <h3>Método Numérico</h3>
+                    <select id="methodSelect" onchange="updateMethodInputs()">
+                        <optgroup label="Búsqueda de Raíces">
+                            <option value="bisection">Bisección</option>
+                            <option value="newton">Newton-Raphson</option>
+                            <option value="secant">Secante</option>
+                        </optgroup>
+                        <optgroup label="Interpolación">
+                            <option value="linear-interpolation">Interpolación Lineal</option>
+                            <option value="polynomial-interpolation">Interpolación Polinómica</option>
+                            <option value="spline-interpolation">Interpolación Spline</option>
+                        </optgroup>
+                        <optgroup label="Integración Numérica">
+                            <option value="trapezoid">Regla del Trapecio</option>
+                            <option value="simpson">Método de Simpson</option>
+                            <option value="gauss-legendre">Gauss-Legendre</option>
+                        </optgroup>
+                    </select>
+                </div>
+
+                <div class="parameters">
+                    <h3>Parámetros</h3>
+                    <div id="dynamic-parameters">
+                        <p>Selecciona un método para ingresar parámetros.</p>
+                    </div>
+                </div>
+
+                <div class="button-group">
+                    <button class="button primary-button" onclick="calculate()">Calcular</button>
+                    <button class="button secondary-button" onclick="clearAll()">Limpiar</button>
+                </div>
+            </div>
+
+            <div class="main-panel">
+                <div class="visualization">
+                    <canvas id="chart"></canvas>
+                </div>
+
+                <div class="table-container">
+                    <table class="results-table">
+                        <thead>
+                            <tr>
+                                <th>Iteración</th>
+                                <th>Valor x</th>
+                                <th>f(x)</th>
+                                <th>Error Relativo</th>
+                                <th>Cambio Absoluto</th>
+                            </tr>
+                        </thead>
+                        <tbody id="resultsBody"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div id="statusBar" class="status-bar">
+            Estado: Listo para calcular | Último cálculo: --:--:-- | Error: 0.00%
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
